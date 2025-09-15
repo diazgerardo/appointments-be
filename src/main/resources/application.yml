@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://appuser:apppass@localhost:27017/appointmentsdb?authSource=appointmentsdb
+
+# optional (from our design)
+app:
+  overbook-limit: 3
+  tz-availability: America/Argentina/Buenos_Aires
+
+server:
+  port: 8080
+  address: 0.0.0.0   # ← bind on all interfaces (needed for WSL -> Windows access)

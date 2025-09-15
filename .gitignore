@@ -1,0 +1,95 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+# --- Maven / Java ---
+target/
+dependency-reduced-pom.xml
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+flattened-pom.xml
+*.class
+*.log
+hs_err_pid*
+replay_pid*
+
+# Test/coverage (usually under target/, but safe to ignore if customized)
+surefire-reports/
+failsafe-reports/
+jacoco.exec
+
+# --- IDEs ---
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.factorypath
+.apt_generated/
+bin/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/
+
+# --- OS / misc ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+*.orig
+
+# --- Optional local config (uncomment if you use them) ---
+# .env
+# .env.*
+# application-local.properties
+# application-local.yml
+
