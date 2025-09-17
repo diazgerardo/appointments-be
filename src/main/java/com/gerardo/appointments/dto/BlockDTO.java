@@ -3,7 +3,7 @@ package com.gerardo.appointments.dto;
 import java.time.OffsetDateTime;
 public class BlockDTO {
   private String id;
-  private Long professionalId;
+  private String professionalId;
   private OffsetDateTime startTs;
   private OffsetDateTime endTs;
   private String reason;
@@ -11,8 +11,8 @@ public class BlockDTO {
 
   public String getId() { return id; }
   public void setId(String id) { this.id = id; }
-  public Long getProfessionalId() { return professionalId; }
-  public void setProfessionalId(Long professionalId) { this.professionalId = professionalId; }
+  public String getProfessionalId() { return professionalId; }
+  public void setProfessionalId(String professionalId) { this.professionalId = professionalId; }
   public OffsetDateTime getStartTs() { return startTs; }
   public void setStartTs(OffsetDateTime startTs) { this.startTs = startTs; }
   public OffsetDateTime getEndTs() { return endTs; }

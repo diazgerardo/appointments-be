@@ -11,9 +11,9 @@ public interface AppointmentRepo extends MongoRepository<Appointment, String> {
 
   // scheduled appointments overlapping a window
   List<Appointment> findByProfessionalIdAndStatusAndEndTsAfterAndStartTsBefore(
-      Long professionalId, AppointmentStatus status, Instant from, Instant to);
+      String professionalId, AppointmentStatus status, Instant from, Instant to);
 
   // quick existence/overlap check for booking
   boolean existsByProfessionalIdAndStatusAndEndTsAfterAndStartTsBefore(
-      Long professionalId, AppointmentStatus status, Instant start, Instant end);
+      String professionalId, AppointmentStatus status, Instant start, Instant end);
 }

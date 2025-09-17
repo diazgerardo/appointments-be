@@ -20,7 +20,7 @@ public class AvailabilityService {
     this.blocks=b; this.appts=a;
   }
 
-  public AvailabilityBlock addOpenBlock(Long proId, OffsetDateTime start, OffsetDateTime end, String reason){
+  public AvailabilityBlock addOpenBlock(String proId, OffsetDateTime start, OffsetDateTime end, String reason){
     var b = new AvailabilityBlock();
     b.setProfessionalId(proId);
     b.setStartTs(start.toInstant());
@@ -33,7 +33,7 @@ public class AvailabilityService {
   public void removeBlock(String blockId){ blocks.deleteById(blockId); }
 
   /** Available slots = OPEN windows − scheduled appointments */
-  public List<SlotDTO> computeSlots(Long proId, OffsetDateTime from, OffsetDateTime to, Duration slot){
+  public List<SlotDTO> computeSlots(String proId, OffsetDateTime from, OffsetDateTime to, Duration slot){
     var f = from.toInstant(); var t = to.toInstant();
     var open = blocks.findByProfessionalIdAndEndTsAfterAndStartTsBefore(proId, f, t)
                      .stream().filter(AvailabilityBlock::isOpen).toList();

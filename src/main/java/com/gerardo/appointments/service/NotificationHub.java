@@ -17,7 +17,7 @@ public final class NotificationHub {
     return emitter;
   }
 
-  public static void broadcastToPatient(Long patientId, String event, String json){
+  public static void broadcastToPatient(String patientId, String event, String json){
     var list = byPatient.getOrDefault(patientId, List.of());
     var dead = new ArrayList<SseEmitter>();
     for (var e : list){

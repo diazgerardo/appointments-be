@@ -20,7 +20,7 @@ public class AppointmentService {
 
   public AppointmentService(AppointmentRepository r, OutboxEventRepository o){ this.repo=r; this.outbox=o; }
 
-  public Appointment book(Long proId, Long patientId, OffsetDateTime start, OffsetDateTime end){
+  public Appointment book(String proId, String patientId, OffsetDateTime start, OffsetDateTime end){
     var s = start.toInstant(); var e = end.toInstant();
     if (repo.existsByProfessionalIdAndStatusAndEndTsAfterAndStartTsBefore(proId, AppointmentStatus.SCHEDULED, s, e))
       throw new IllegalStateException("slot not available");
