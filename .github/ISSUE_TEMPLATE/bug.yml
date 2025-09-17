@@ -1,0 +1,51 @@
+name: Bug
+description: Reporte y métricas de un problema
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área
+      options: [FE, BE, API, Infra, Docs]
+    validations: { required: true }
+  - type: input
+    id: endpoint
+    attributes:
+      label: Endpoint/Componente
+      placeholder: e.g. GET /api/professionals/{id}/slots
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir
+  - type: textarea
+    id: expected
+    attributes:
+      label: Esperado
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual
+  - type: input
+    id: severity
+    attributes:
+      label: Severidad
+      placeholder: S1-crit | S2-high | S3-med | S4-low
+  - type: input
+    id: detected_at
+    attributes:
+      label: Detectado (UTC)
+      placeholder: 2025-09-16T23:00:00Z
+  - type: input
+    id: fixed_at
+    attributes:
+      label: Corregido (UTC)
+      placeholder: 2025-09-17T01:30:00Z
+  - type: textarea
+    id: payload
+    attributes:
+      label: Payload y respuesta (si aplica)
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notas
