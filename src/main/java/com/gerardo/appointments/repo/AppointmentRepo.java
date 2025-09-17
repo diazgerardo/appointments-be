@@ -1,14 +1,19 @@
 package com.gerardo.appointments.repo;
 
 import com.gerardo.appointments.domain.Appointment;
+import com.gerardo.appointments.domain.AppointmentStatus;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.time.Instant;
 import java.util.List;
 
 public interface AppointmentRepo extends MongoRepository<Appointment, String> {
-  List<Appointment> findByProfessionalIdAndStartUtcLessThanAndEndUtcGreaterThan(
-          String professionalId, Instant endExclusive, Instant startExclusive);
-  List<Appointment> findByProfessionalIdAndStartUtcBetween(String professionalId, Instant from, Instant to);
-  List<Appointment> findByPatientIdOrderByStartUtcDesc(String patientId);
+
+  // scheduled appointments overlapping a window
+  List<Appointment> findByProfessionalIdAndStatusAndEndTsAfterAndStartTsBefore(
+      Long professionalId, AppointmentStatus status, Instant from, Instant to);
+
+  // quick existence/overlap check for booking
+  boolean existsByProfessionalIdAndStatusAndEndTsAfterAndStartTsBefore(
+      Long professionalId, AppointmentStatus status, Instant start, Instant end);
 }
