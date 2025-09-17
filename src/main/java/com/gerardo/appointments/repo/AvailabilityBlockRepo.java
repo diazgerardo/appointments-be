@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface AvailabilityBlockRepo extends MongoRepository<AvailabilityBlock, String> {
 
-  List<AvailabilityBlock> findByProfessionalId(Long professionalId);
+  List<AvailabilityBlock> findByProfessionalId(String professionalId);
 
   // windows overlapping a range
   List<AvailabilityBlock> findByProfessionalIdAndEndTsAfterAndStartTsBefore(
-      Long professionalId, Instant from, Instant to);
+      String professionalId, Instant from, Instant to);
 }

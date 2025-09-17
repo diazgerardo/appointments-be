@@ -8,9 +8,9 @@ import java.time.Instant;
 import java.util.List;
 
 public interface AvailabilityBlockRepository extends MongoRepository<AvailabilityBlock, String> {
-  List<AvailabilityBlock> findByProfessionalId(Long proId);
+  List<AvailabilityBlock> findByProfessionalId(String proId);
 
   // overlap: end > from AND start < to
   List<AvailabilityBlock> findByProfessionalIdAndEndTsAfterAndStartTsBefore(
-      Long proId, Instant from, Instant to);
+      String proId, Instant from, Instant to);
 }

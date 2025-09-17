@@ -19,7 +19,7 @@ public class AvailabilityController {
   public AvailabilityController(AvailabilityService s){ this.svc=s; }
 
   @PostMapping("/availability/blocks")
-  public BlockDTO addOpenBlock(@PathVariable Long proId, @RequestBody BlockDTO req){
+  public BlockDTO addOpenBlock(@PathVariable String proId, @RequestBody BlockDTO req){
     AvailabilityBlock b = svc.addOpenBlock(proId, req.getStartTs(), req.getEndTs(), req.getReason());
     var dto = new BlockDTO();
     dto.setId(b.getId()); dto.setProfessionalId(b.getProfessionalId());
@@ -33,7 +33,7 @@ public class AvailabilityController {
   public void removeBlock(@PathVariable String blockId){ svc.removeBlock(blockId); }
 
   @GetMapping("/slots")
-  public List<SlotDTO> slots(@PathVariable Long proId,
+  public List<SlotDTO> slots(@PathVariable String proId,
       @RequestParam @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME) OffsetDateTime from,
       @RequestParam @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME) OffsetDateTime to,
       @RequestParam(defaultValue="30") int slotMinutes){
