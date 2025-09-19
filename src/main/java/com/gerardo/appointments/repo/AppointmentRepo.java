@@ -1,3 +1,4 @@
+// src/main/java/com/gerardo/appointments/repo/AppointmentRepo.java
 package com.gerardo.appointments.repo;
 
 import com.gerardo.appointments.domain.Appointment;
@@ -9,11 +10,19 @@ import java.util.List;
 
 public interface AppointmentRepo extends MongoRepository<Appointment, String> {
 
-  // scheduled appointments overlapping a window
+  // overlap en rango (profesional)
   List<Appointment> findByProfessionalIdAndStatusAndEndTsAfterAndStartTsBefore(
-      String professionalId, AppointmentStatus status, Instant from, Instant to);
+          String professionalId, AppointmentStatus status, Instant from, Instant to);
 
-  // quick existence/overlap check for booking
-  boolean existsByProfessionalIdAndStatusAndEndTsAfterAndStartTsBefore(
-      String professionalId, AppointmentStatus status, Instant start, Instant end);
+  // overlap en rango (paciente)
+  List<Appointment> findByPatientIdAndStatusAndEndTsAfterAndStartTsBefore(
+          String patientId, AppointmentStatus status, Instant from, Instant to);
+
+  // capacidad por slot (profesional)
+  long countByProfessionalIdAndStatusAndEndTsAfterAndStartTsBefore(
+          String professionalId, AppointmentStatus status, Instant from, Instant to);
+
+  // no solape del paciente
+  boolean existsByPatientIdAndStatusAndEndTsAfterAndStartTsBefore(
+          String patientId, AppointmentStatus status, Instant from, Instant to);
 }

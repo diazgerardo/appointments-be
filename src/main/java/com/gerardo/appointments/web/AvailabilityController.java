@@ -26,6 +26,9 @@ public class AvailabilityController {
     dto.setStartTs(OffsetDateTime.ofInstant(b.getStartTs(), java.time.ZoneOffset.UTC));
     dto.setEndTs(OffsetDateTime.ofInstant(b.getEndTs(), java.time.ZoneOffset.UTC));
     dto.setReason(b.getReason()); dto.setOpen(true);
+    // dentro de addOpenBlock(...)
+    var lt = req.getLocationType() == null ? com.gerardo.appointments.domain.LocationType.HOSPITAL : req.getLocationType();
+    b.setLocationType(lt);
     return dto;
   }
 
