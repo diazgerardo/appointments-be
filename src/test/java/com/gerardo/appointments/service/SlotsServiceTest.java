@@ -10,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
@@ -147,7 +146,7 @@ class SlotsServiceTest {
         assertEquals(3, slots.size());
 
         // First slot: 9:00-10:00 (available)
-        SlotViewDTO firstSlot = slots.get(0);
+        SlotViewDTO firstSlot = slots.getFirst();
         assertEquals("AVAILABLE", firstSlot.getStatus());
         assertEquals(0, firstSlot.getOverlapCount());
 
@@ -156,8 +155,8 @@ class SlotsServiceTest {
         assertEquals("BOOKED", secondSlot.getStatus());
         assertEquals(1, secondSlot.getOverlapCount());
         assertEquals(1, secondSlot.getBookings().size());
-        assertEquals(patientId, secondSlot.getBookings().get(0).getPatientId());
-        assertEquals("Jane Doe", secondSlot.getBookings().get(0).getPatientName());
+        assertEquals(patientId, secondSlot.getBookings().getFirst().getPatientId());
+        assertEquals("Jane Doe", secondSlot.getBookings().getFirst().getPatientName());
 
         // Third slot: 11:00-12:00 (available)
         SlotViewDTO thirdSlot = slots.get(2);
@@ -253,7 +252,7 @@ class SlotsServiceTest {
         assertNotNull(slots);
         assertEquals(1, slots.size()); // Only 10:00-11:00
 
-        SlotViewDTO slot = slots.get(0);
+        SlotViewDTO slot = slots.getFirst();
         assertEquals("BOOKED", slot.getStatus());
         assertEquals(1, slot.getOverlapCount());
         assertEquals(1, slot.getBookings().size());
@@ -363,14 +362,14 @@ class SlotsServiceTest {
         assertNotNull(slots);
         assertEquals(1, slots.size());
 
-        SlotViewDTO slot = slots.get(0);
+        SlotViewDTO slot = slots.getFirst();
         assertEquals(professionalId, slot.getProfessionalId());
         assertEquals("Dr. John Smith", slot.getProfessionalName());
         assertEquals("BOOKED", slot.getStatus());
         assertEquals(1, slot.getOverlapCount());
         assertEquals(LocationType.PRIVATE, slot.getLocationType());
         assertEquals(1, slot.getBookings().size());
-        assertEquals("appt123", slot.getBookings().get(0).getAppointmentId());
+        assertEquals("appt123", slot.getBookings().getFirst().getAppointmentId());
     }
 
     @Test
@@ -421,7 +420,7 @@ class SlotsServiceTest {
         // Then
         assertNotNull(slots);
         assertEquals(1, slots.size());
-        assertEquals(LocationType.HOSPITAL, slots.get(0).getLocationType()); // Default
+        assertEquals(LocationType.HOSPITAL, slots.getFirst().getLocationType()); // Default
     }
 
     @Test
@@ -455,6 +454,6 @@ class SlotsServiceTest {
         // Then
         assertNotNull(slots);
         assertFalse(slots.isEmpty());
-        assertNull(slots.get(0).getProfessionalName());
+        assertNull(slots.getFirst().getProfessionalName());
     }
 }

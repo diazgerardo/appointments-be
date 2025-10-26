@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SlotsServiceTest.testProfessionalSlots_WithAppointments_ReturnsBookedSlots" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <module name="appointments-be" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.gerardo.appointments.service.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../Java/jdk-21.0.8" />
+    <option name="PACKAGE_NAME" value="com.gerardo.appointments.service" />
+    <option name="MAIN_CLASS_NAME" value="com.gerardo.appointments.service.SlotsServiceTest" />
+    <option name="METHOD_NAME" value="testProfessionalSlots_WithAppointments_ReturnsBookedSlots" />
+    <option name="TEST_OBJECT" value="method" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
